@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SalesDatePredictionAPI.props" />
+</Project>
