@@ -72,3 +72,4 @@ D:\Desarrollos\Codifico\SalesDatePrediction-Backend\SalesDatePredictionAPI\obj\D
 D:\Desarrollos\Codifico\SalesDatePrediction-Backend\SalesDatePredictionAPI\obj\Debug\net9.0\SalesDatePredictionAPI.pdb
 D:\Desarrollos\Codifico\SalesDatePrediction-Backend\SalesDatePredictionAPI\obj\Debug\net9.0\SalesDatePredictionAPI.genruntimeconfig.cache
 D:\Desarrollos\Codifico\SalesDatePrediction-Backend\SalesDatePredictionAPI\obj\Debug\net9.0\ref\SalesDatePredictionAPI.dll
+D:\Desarrollos\Codifico\SalesDatePrediction-Backend\SalesDatePredictionAPI\obj\Debug\net9.0\SalesDatePredictionAPI.sourcelink.json

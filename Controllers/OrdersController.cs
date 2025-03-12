@@ -19,4 +19,18 @@ public class OrdersController : ControllerBase
         var orders = await _repository.GetClientOrdersAsync(customerId);
         return Ok(orders);
     }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> InsertOrderWithProduct([FromBody] OrderRequest orderRequest)
+    {
+        if (orderRequest == null)
+            return BadRequest("Invalid request");
+
+        bool result = await _repository.InsertOrderWithProduct(orderRequest);
+
+        if (result)
+            return Ok(new { message = "Order created successfully" });
+
+        return StatusCode(500, new { error = "Error inserting order" });
+    }
 }

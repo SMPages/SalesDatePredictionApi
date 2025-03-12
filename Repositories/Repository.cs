@@ -11,9 +11,9 @@ public class Repository : IRepository
         _dbConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
     }
 
-    public async Task<IEnumerable<NextOrderPredictionDto>> GetNextOrderPredictionsAsync()
+    public async Task<IEnumerable<CustomersDto>> GetNextOrderPredictionsAsync()
     {
-        var result = await _dbConnection.QueryAsync<NextOrderPredictionDto>(
+        var result = await _dbConnection.QueryAsync<CustomersDto>(
             "sp_GetNextOrderPrediction", 
             commandType: CommandType.StoredProcedure
         );
@@ -37,5 +37,39 @@ public class Repository : IRepository
         string sql = "EXEC sp_GetShippers";
         return await _dbConnection.QueryAsync<ShipperDto>(sql);
     }
+    public async Task<IEnumerable<ProductDto>> GetProductsAsync()
+    {
+        return await _dbConnection.QueryAsync<ProductDto>("sp_GetProducts", commandType: CommandType.StoredProcedure);
+    }
 
+    public async Task<bool> InsertOrderWithProduct(OrderRequest orderRequest)
+    {
+        var parameters = new
+        {
+            orderRequest.Empid,
+            orderRequest.Shipperid,
+            orderRequest.Shipname,
+            orderRequest.Shipaddress,
+            orderRequest.Shipcity,
+            orderRequest.Orderdate,
+            orderRequest.Requireddate,
+            orderRequest.Shippeddate,
+            orderRequest.Freight,
+            orderRequest.Shipcountry,
+            orderRequest.Productid,
+            orderRequest.Unitprice,
+            orderRequest.Qty,
+            orderRequest.Discount
+        };
+
+        try
+        {
+            await _dbConnection.ExecuteAsync("sp_InsertOrderWithProduct", parameters, commandType: CommandType.StoredProcedure);
+            return true;
+        }
+        catch (SqlException)
+        {
+            return false;
+        }
+    }
 }

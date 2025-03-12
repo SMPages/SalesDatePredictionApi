@@ -1,4 +1,4 @@
-public class NextOrderPredictionDto
+public class CustomersDto
 {
     public string? CustomerName { get; set; }
     public DateTime? LastOrderDate { get; set; }

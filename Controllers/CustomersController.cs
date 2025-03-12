@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-public class PredictionsController : ControllerBase
+public class CustomersController : ControllerBase
 {
     private readonly IRepository _repository;
 
-    public PredictionsController(IRepository repository)
+    public CustomersController(IRepository repository)
     {
         _repository = repository;
     }
