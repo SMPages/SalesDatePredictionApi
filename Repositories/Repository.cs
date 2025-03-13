@@ -56,6 +56,7 @@ public class Repository : IRepository
         using var connection = new SqlConnection(_connectionString);
         var parameters = new
         {
+            orderRequest.CustomerId,  
             orderRequest.Empid,
             orderRequest.Shipperid,
             orderRequest.Shipname,
@@ -81,8 +82,10 @@ public class Repository : IRepository
             );
             return true;
         }
-        catch (SqlException)
+        catch (SqlException ex)
         {
+            Console.WriteLine($"SQL Error: {ex.Message}"); // Log en consola
+            throw new Exception($"Database Error: {ex.Message}"); // Enviar el mensaje real
             return false;
         }
     }

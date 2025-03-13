@@ -1,5 +1,6 @@
  public class OrderRequest
     {
+        public int CustomerId { get; set; } 
         public int Empid { get; set; }
         public int Shipperid { get; set; }
         public string? Shipname { get; set; }
