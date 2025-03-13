@@ -25,7 +25,7 @@ try
 
     if (string.IsNullOrEmpty(connectionString))
     {
-        throw new InvalidOperationException("ERROR: La cadena de conexión no está configurada en appsettings.json.");
+        throw new InvalidOperationException("ERROR: La cadena de conexión DefaultConnection no está configurada en appsettings.json.");
     }
     // Inyectar la conexión a la base de datos
     builder.Services.AddScoped<IDbConnection>(sp => new SqlConnection(connectionString));
@@ -69,13 +69,9 @@ try
 
     // Usar CORS con la política configurada
     app.UseCors("AllowFrontend");
-
     app.UseAuthorization();
-
     app.MapControllers();
-
     appLogger.LogInformation("API iniciada en {Url}", "http://localhost:5281");
-
     app.Run();
 }
 catch (Exception ex)
