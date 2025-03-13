@@ -13,7 +13,7 @@ public class OrdersController : ControllerBase
         _repository = repository;
     }
 
-     [HttpGet("{customerId}")]
+    [HttpGet("customer/{customerId}")]
     public async Task<IActionResult> GetClientOrders(int customerId)
     {
         var orders = await _repository.GetClientOrdersAsync(customerId);

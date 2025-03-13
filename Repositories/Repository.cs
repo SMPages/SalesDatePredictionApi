@@ -4,46 +4,55 @@ using Microsoft.Data.SqlClient;
 
 public class Repository : IRepository
 {
-    private readonly IDbConnection _dbConnection;
+    private readonly string _connectionString;
 
     public Repository(IConfiguration configuration)
     {
-        _dbConnection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
+        _connectionString = configuration.GetConnectionString("DefaultConnection");
     }
 
     public async Task<IEnumerable<CustomersDto>> GetNextOrderPredictionsAsync()
     {
-        var result = await _dbConnection.QueryAsync<CustomersDto>(
-            "sp_GetNextOrderPrediction", 
+        using var connection = new SqlConnection(_connectionString);
+        return await connection.QueryAsync<CustomersDto>(
+            "sp_GetNextOrderPrediction",
             commandType: CommandType.StoredProcedure
         );
-        return result;
     }
 
     public async Task<IEnumerable<ClientOrderDto>> GetClientOrdersAsync(int customerId)
     {
+        using var connection = new SqlConnection(_connectionString);
         string sql = "EXEC sp_GetClientOrders @CustomerId";
-        return await _dbConnection.QueryAsync<ClientOrderDto>(sql, new { CustomerId = customerId });
+        return await connection.QueryAsync<ClientOrderDto>(sql, new { CustomerId = customerId });
     }
 
     public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync()
     {
+        using var connection = new SqlConnection(_connectionString);
         string sql = "EXEC sp_GetEmployees";
-        return await _dbConnection.QueryAsync<EmployeeDto>(sql);
+        return await connection.QueryAsync<EmployeeDto>(sql);
     }
 
     public async Task<IEnumerable<ShipperDto>> GetShippersAsync()
     {
+        using var connection = new SqlConnection(_connectionString);
         string sql = "EXEC sp_GetShippers";
-        return await _dbConnection.QueryAsync<ShipperDto>(sql);
+        return await connection.QueryAsync<ShipperDto>(sql);
     }
+
     public async Task<IEnumerable<ProductDto>> GetProductsAsync()
     {
-        return await _dbConnection.QueryAsync<ProductDto>("sp_GetProducts", commandType: CommandType.StoredProcedure);
+        using var connection = new SqlConnection(_connectionString);
+        return await connection.QueryAsync<ProductDto>(
+            "sp_GetProducts",
+            commandType: CommandType.StoredProcedure
+        );
     }
 
     public async Task<bool> InsertOrderWithProduct(OrderRequest orderRequest)
     {
+        using var connection = new SqlConnection(_connectionString);
         var parameters = new
         {
             orderRequest.Empid,
@@ -64,7 +73,11 @@ public class Repository : IRepository
 
         try
         {
-            await _dbConnection.ExecuteAsync("sp_InsertOrderWithProduct", parameters, commandType: CommandType.StoredProcedure);
+            await connection.ExecuteAsync(
+                "sp_InsertOrderWithProduct",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
             return true;
         }
         catch (SqlException)

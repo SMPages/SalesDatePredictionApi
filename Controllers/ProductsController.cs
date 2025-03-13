@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-[Route("api/[controller]")]
+[Route("api/products")]
 [ApiController]
 public class ProductsController : ControllerBase
 {

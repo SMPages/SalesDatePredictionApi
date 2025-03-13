@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-[Route("api/[controller]")]
+[Route("api/customers")]
 [ApiController]
 public class CustomersController : ControllerBase
 {
@@ -13,10 +14,16 @@ public class CustomersController : ControllerBase
         _repository = repository;
     }
 
-    [HttpGet("next-order")]
-    public async Task<IActionResult> GetNextOrderPrediction()
+    [HttpGet]
+    public async Task<IActionResult> GetCustomers([FromQuery] string search = "")
     {
-        var result = await _repository.GetNextOrderPredictionsAsync();
-        return Ok(result);
+        IEnumerable<CustomersDto> customers = await _repository.GetNextOrderPredictionsAsync();
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            customers = customers.Where(x => x.CustomerName.Contains(search, StringComparison.OrdinalIgnoreCase));
+        }
+
+        return Ok(customers);
     }
 }
