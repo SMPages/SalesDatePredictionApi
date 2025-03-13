@@ -8,7 +8,8 @@ public class Repository : IRepository
 
     public Repository(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("DefaultConnection");
+       _connectionString = configuration.GetConnectionString("DefaultConnection")
+            ?? throw new InvalidOperationException("La cadena de conexión no está configurada en appsettings.json.");
     }
 
     public async Task<IEnumerable<CustomersDto>> GetNextOrderPredictionsAsync()

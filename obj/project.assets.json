@@ -2135,23 +2135,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sebastian Uni\\.nuget\\packages\\": {},
+    "C:\\Users\\gmarciales\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desarrollos\\Codifico\\SalesDatePrediction-Backend\\SalesDatePredictionAPI\\SalesDatePredictionAPI.csproj",
+      "projectUniqueName": "D:\\Desarrollos\\SalesApi\\SalesDatePredictionApi\\SalesDatePredictionAPI.csproj",
       "projectName": "SalesDatePredictionAPI",
-      "projectPath": "D:\\Desarrollos\\Codifico\\SalesDatePrediction-Backend\\SalesDatePredictionAPI\\SalesDatePredictionAPI.csproj",
-      "packagesPath": "C:\\Users\\Sebastian Uni\\.nuget\\packages\\",
-      "outputPath": "D:\\Desarrollos\\Codifico\\SalesDatePrediction-Backend\\SalesDatePredictionAPI\\obj\\",
+      "projectPath": "D:\\Desarrollos\\SalesApi\\SalesDatePredictionApi\\SalesDatePredictionAPI.csproj",
+      "packagesPath": "C:\\Users\\gmarciales\\.nuget\\packages\\",
+      "outputPath": "D:\\Desarrollos\\SalesApi\\SalesDatePredictionApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Sebastian Uni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gmarciales\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2160,7 +2160,9 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://devops.syc.com.co/syc/92f8fdf9-17a1-4a11-a3df-91bbe000d343/_packaging/admonSycArtifacts/nuget/v3/index.json": {},
+        "https://devops.syc.com.co/syc/_packaging/sycartifact%40Local/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
@@ -2178,7 +2180,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -2220,7 +2222,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
