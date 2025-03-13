@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SalesDatePredictionAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d828112fc1908c5ab0ff218108020eda46f758a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7abdfb852399063df6a8239b8fae7bbbf2e8332")]
 [assembly: System.Reflection.AssemblyProductAttribute("SalesDatePredictionAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SalesDatePredictionAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
